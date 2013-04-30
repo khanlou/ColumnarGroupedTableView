@@ -18,6 +18,8 @@
 		1A467229172F4B1E003882F9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A467228172F4B1E003882F9 /* Default-568h@2x.png */; };
 		1A46722C172F4B1E003882F9 /* SKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A46722B172F4B1E003882F9 /* SKViewController.m */; };
 		1A46722F172F4B1E003882F9 /* SKViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A46722D172F4B1E003882F9 /* SKViewController.xib */; };
+		1A467237172F4DFA003882F9 /* SKColumnarTableViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A467236172F4DFA003882F9 /* SKColumnarTableViewLayout.m */; };
+		1A46723A172F5569003882F9 /* SKGroupedTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A467239172F5569003882F9 /* SKGroupedTableCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,10 @@
 		1A46722A172F4B1E003882F9 /* SKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKViewController.h; sourceTree = "<group>"; };
 		1A46722B172F4B1E003882F9 /* SKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKViewController.m; sourceTree = "<group>"; };
 		1A46722E172F4B1E003882F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SKViewController.xib; sourceTree = "<group>"; };
+		1A467235172F4DFA003882F9 /* SKColumnarTableViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKColumnarTableViewLayout.h; sourceTree = "<group>"; };
+		1A467236172F4DFA003882F9 /* SKColumnarTableViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKColumnarTableViewLayout.m; sourceTree = "<group>"; };
+		1A467238172F5569003882F9 /* SKGroupedTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKGroupedTableCell.h; sourceTree = "<group>"; };
+		1A467239172F5569003882F9 /* SKGroupedTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKGroupedTableCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +94,10 @@
 				1A46722A172F4B1E003882F9 /* SKViewController.h */,
 				1A46722B172F4B1E003882F9 /* SKViewController.m */,
 				1A46722D172F4B1E003882F9 /* SKViewController.xib */,
+				1A467235172F4DFA003882F9 /* SKColumnarTableViewLayout.h */,
+				1A467236172F4DFA003882F9 /* SKColumnarTableViewLayout.m */,
+				1A467238172F5569003882F9 /* SKGroupedTableCell.h */,
+				1A467239172F5569003882F9 /* SKGroupedTableCell.m */,
 				1A467219172F4B1E003882F9 /* Supporting Files */,
 			);
 			path = ColumnarGroupedTableView;
@@ -177,6 +187,8 @@
 				1A46721F172F4B1E003882F9 /* main.m in Sources */,
 				1A467223172F4B1E003882F9 /* SKAppDelegate.m in Sources */,
 				1A46722C172F4B1E003882F9 /* SKViewController.m in Sources */,
+				1A467237172F4DFA003882F9 /* SKColumnarTableViewLayout.m in Sources */,
+				1A46723A172F5569003882F9 /* SKGroupedTableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,7 +276,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ColumnarGroupedTableView/ColumnarGroupedTableView-Prefix.pch";
 				INFOPLIST_FILE = "ColumnarGroupedTableView/ColumnarGroupedTableView-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -275,7 +289,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ColumnarGroupedTableView/ColumnarGroupedTableView-Prefix.pch";
 				INFOPLIST_FILE = "ColumnarGroupedTableView/ColumnarGroupedTableView-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

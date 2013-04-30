@@ -7,8 +7,15 @@
 //
 
 #import "SKViewController.h"
+#import "SKColumnarTableViewLayout.h"
+#import "SKGroupedTableCell.h"
+
+#define CELL_COUNT 30
+#define kSKCellIdentifier @"aCell"
 
 @interface SKViewController ()
+
+@property (nonatomic, strong) NSArray *dataSource;
 
 @end
 
@@ -16,14 +23,35 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	[super viewDidLoad];
+	
+	
+	self.collectionView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+	self.dataSource = @[ @[@"adsfsd", @"adsfsd", @"adsfsd", @"adsfsd"], @[@"adsfsd", @"adsfsd", @"adsfsd", @"adsfsd"], @[@"adsfsd", @"adsfsd", @"adsfsd", @"adsfsd"]];
+	
+	[self.collectionView registerClass:[SKGroupedTableCell class] forCellWithReuseIdentifier:kSKCellIdentifier];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+	return _dataSource.count;
 }
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+	return ((NSArray*)_dataSource[section]).count;
+}
+
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+	SKGroupedTableCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kSKCellIdentifier forIndexPath:indexPath];
+	
+	cell.textLabel.text = self.dataSource[indexPath.section][indexPath.row];
+	cell.detailTextLabel.text = self.dataSource[indexPath.section][indexPath.row];
+	
+	return cell;
+}
+
+
 
 @end

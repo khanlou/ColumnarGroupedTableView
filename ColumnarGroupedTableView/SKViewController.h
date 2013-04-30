@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SKViewController : UIViewController
+@interface SKViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+
+@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
+
+
 
 @end
