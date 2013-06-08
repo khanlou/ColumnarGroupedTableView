@@ -8,6 +8,8 @@
 
 #import "SKColumnarTableViewLayout.h"
 
+#define kSKLayoutSectionPadding 5.0f
+
 @interface SKColumnarTableViewLayout ()
 
 @property (nonatomic, strong) NSMutableArray *columnHeights; // height for each column
@@ -73,6 +75,8 @@
 		[_itemAttributes addObject:[NSMutableArray arrayWithCapacity:numberOfItemsInSection]];
 
 		NSUInteger columnIndex = [self shortestColumnIndex];
+		
+		_columnHeights[columnIndex] =  @([_columnHeights[columnIndex] floatValue] + kSKLayoutSectionPadding); //replace this with section insets?
 
 		for (NSInteger currentItemIndex = 0; currentItemIndex < numberOfItemsInSection; currentItemIndex++) {
 			NSIndexPath *indexPath = [NSIndexPath indexPathForItem:currentItemIndex inSection:currentSection];
@@ -87,6 +91,16 @@
 			
 			UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
 			attributes.frame = CGRectMake(x, y, columnWidth, itemHeight);
+			
+			if (currentItemIndex == 0) {
+				attributes.zIndex = 0; //top
+			} else if (currentItemIndex == numberOfItemsInSection - 1) {
+				attributes.zIndex = 2; //bottom
+			} else if (numberOfItemsInSection == 1) {
+				attributes.zIndex = 4; //single
+			} else {
+				attributes.zIndex = 1; //middle
+			}
 			
 			[_itemAttributes[currentSection] addObject:attributes];
 			_columnHeights[columnIndex] = @(y + itemHeight);

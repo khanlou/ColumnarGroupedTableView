@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+
+typedef enum  {
+	SKCellPositionSingle = 0,
+	SKCellPositionTop,
+	SKCellPositionBottom,
+	SKCellPositionMiddle
+} SKCellPosition;
+
+
 @interface SKGroupedTableCell : UICollectionViewCell
 
 @property (nonatomic, readonly) UILabel *textLabel;
