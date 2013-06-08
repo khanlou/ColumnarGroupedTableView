@@ -7,6 +7,7 @@
 //
 
 #import "SKGroupedTableCell.h"
+#import "UIColor+Hex.h"
 
 #define kSKCellCornerRadius 10.0f
 #define kSKCellVerticalPadding 10.0f
@@ -43,19 +44,11 @@
 	return _textLabel;
 }
 
-- (UIColor*) generateRandomColor {
-	CGFloat hue = ( arc4random() % 256 / 256.0 );  //  0.0 to 1.0
-	CGFloat saturation = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from white
-	CGFloat brightness = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from black
-	UIColor *color = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
-	return color;
-}
-
 - (UILabel*) detailTextLabel {
 	if (!_detailTextLabel) {
 		self.detailTextLabel = [UILabel new];
 		_detailTextLabel.font = [UIFont systemFontOfSize:12.0f];
-		_detailTextLabel.textColor = [UIColor lightGrayColor];
+		_detailTextLabel.textColor = [UIColor colorWithHex:0x808080];
 		_detailTextLabel.backgroundColor = [UIColor clearColor];
 		[self.contentView addSubview:_detailTextLabel];
 	}
@@ -76,15 +69,12 @@
 	switch (layoutAttributes.zIndex) {
 		case 0:
 			self.cellPosition = SKCellPositionTop;
-			
 			break;
 		case 1:
 			self.cellPosition = SKCellPositionMiddle;
-			
 			break;
 		case 2:
 			self.cellPosition = SKCellPositionBottom;
-			
 			break;
 		case 3:
 			self.cellPosition = SKCellPositionSingle;
@@ -98,7 +88,7 @@
 	[super layoutSubviews];
 	
 	CGRect workingRect = self.contentView.bounds;
-	workingRect = CGRectInset(workingRect, 2 + kSKCellHorizontalPadding, 2);
+	workingRect = CGRectInset(workingRect, 6 + kSKCellHorizontalPadding, 6);
 	CGRect imageRect = CGRectZero, textRect = workingRect, detailTextRect = CGRectZero;
 	
 	if (_imageView) {
@@ -129,9 +119,9 @@
 	
 	CGRect rect = [self bounds];
 	
-	CGContextSetStrokeColorWithColor(c, [UIColor redColor].CGColor);
+	CGContextSetStrokeColorWithColor(c, [UIColor colorWithHex:0xababab].CGColor);
 	
-	CGContextSetFillColorWithColor(c, [UIColor blueColor].CGColor);
+	CGContextSetFillColorWithColor(c, [UIColor colorWithHex:0xf7f7f7].CGColor);
 	
 	CGContextSetLineWidth(c, lineWidth);
 	CGContextSetAllowsAntialiasing(c, YES);
@@ -140,9 +130,13 @@
 	CGPathRef path = [self newRoundedPathForRect:rect cellPosition:self.cellPosition];
 	
 	CGContextAddPath(c, path);
-	
+	CGContextFillPath(c);
+	CGContextAddPath(c, path);
 	CGContextStrokePath(c);
 	
+	if (path != NULL) {
+		CFRelease(path);
+	}
 	
 	return;
 }
@@ -181,6 +175,8 @@
 		CGPathAddLineToPoint(path, NULL, minx, miny);
 		CGPathCloseSubpath(path);
 	} else if (cellPosition == SKCellPositionSingle) {
+		miny += 1; //see above
+		maxy -= 1; //see above
 		CGPathMoveToPoint(path, NULL, minx, midy);
 		CGPathAddArcToPoint(path, NULL, minx, miny, midx, miny, kSKCellCornerRadius);
 		CGPathAddArcToPoint(path, NULL, maxx, miny, maxx, midy, kSKCellCornerRadius);
