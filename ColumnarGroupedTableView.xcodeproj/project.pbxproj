@@ -20,6 +20,7 @@
 		1A46722F172F4B1E003882F9 /* SKViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A46722D172F4B1E003882F9 /* SKViewController.xib */; };
 		1A467237172F4DFA003882F9 /* SKColumnarTableViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A467236172F4DFA003882F9 /* SKColumnarTableViewLayout.m */; };
 		1A46723A172F5569003882F9 /* SKGroupedTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A467239172F5569003882F9 /* SKGroupedTableCell.m */; };
+		347997071763913500236D37 /* SKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 347997061763913500236D37 /* SKViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		1A467236172F4DFA003882F9 /* SKColumnarTableViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKColumnarTableViewLayout.m; sourceTree = "<group>"; };
 		1A467238172F5569003882F9 /* SKGroupedTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKGroupedTableCell.h; sourceTree = "<group>"; };
 		1A467239172F5569003882F9 /* SKGroupedTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKGroupedTableCell.m; sourceTree = "<group>"; };
+		347997061763913500236D37 /* SKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				1A467236172F4DFA003882F9 /* SKColumnarTableViewLayout.m */,
 				1A467238172F5569003882F9 /* SKGroupedTableCell.h */,
 				1A467239172F5569003882F9 /* SKGroupedTableCell.m */,
+				347997061763913500236D37 /* SKViewController.m */,
 				1A467219172F4B1E003882F9 /* Supporting Files */,
 			);
 			path = ColumnarGroupedTableView;
@@ -189,6 +192,7 @@
 				1A46722C172F4B1E003882F9 /* SKViewController.m in Sources */,
 				1A467237172F4DFA003882F9 /* SKColumnarTableViewLayout.m in Sources */,
 				1A46723A172F5569003882F9 /* SKGroupedTableCell.m in Sources */,
+				347997071763913500236D37 /* SKViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +319,7 @@
 				1A467234172F4B1E003882F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
