@@ -27,8 +27,32 @@
 	
 	
 	self.collectionView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-	self.dataSource = @[ @[@"adsfsd", @"adsfsd", @"adsfsd", @"adsfsd"], @[@"adsfsd", @"adsfsd", @"adsfsd", @"adsfsd"], @[@"adsfsd", @"adsfsd", @"adsfsd", @"adsfsd"]];
-	
+	self.dataSource = (@[
+				    (@[
+					@"Brea",
+					@"Canoga Park",
+					@"Carlsbad",
+					@"Chula Vista",
+					@"Corte Madera",
+					@"Costa Mesa",
+					@"Emeryville",
+					@"Escondido",
+					@"Fresno",
+					@"Glendale",
+					@"Irvine",
+					@"Los Angeles",
+					@"Los Gatos",
+					]),
+				    (@[
+					@"adsfsd",
+					@"adsfsd",
+					@"adsfsd",
+					@"adsfsd"
+					]),
+				    (@[
+					@"adsfsd"
+					])
+				    ]);
 	[self.collectionView registerClass:[SKGroupedTableCell class] forCellWithReuseIdentifier:kSKCellIdentifier];
 }
 
