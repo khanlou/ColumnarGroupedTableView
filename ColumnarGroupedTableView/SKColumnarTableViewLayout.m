@@ -20,6 +20,21 @@
 
 @implementation SKColumnarTableViewLayout
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+	self = [super init];
+	if (self) {
+		[self commonInit];
+	}
+	return self;
+}
+
+- (void)commonInit
+{
+	self.numberOfColumns = 2;
+	self.rowHeight = 44.0f;
+}
+
 - (void)setNumberOfColumns:(NSUInteger)numberOfColumns {
 	if (_numberOfColumns != numberOfColumns) {
 		_numberOfColumns = numberOfColumns;
@@ -34,19 +49,16 @@
 	}
 }
 
-- (void)commonInit
+- (CGSize)collectionViewContentSize
 {
-	self.numberOfColumns = 2;
-	self.rowHeight = 44.0f;
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-	self = [super init];
-	if (self) {
-		[self commonInit];
+	if (self.itemCount == 0) {
+		return CGSizeZero;
 	}
-	return self;
+	
+	CGSize contentSize = self.collectionView.frame.size;
+	NSUInteger columnIndex = [self longestColumnIndex];
+	contentSize.height = [self.columnHeights[columnIndex] floatValue];
+	return contentSize;
 }
 
 
@@ -109,18 +121,6 @@
 	}
 }
 
-- (CGSize)collectionViewContentSize
-{
-	if (self.itemCount == 0) {
-		return CGSizeZero;
-	}
-	
-	CGSize contentSize = self.collectionView.frame.size;
-	NSUInteger columnIndex = [self longestColumnIndex];
-	contentSize.height = [self.columnHeights[columnIndex] floatValue];
-	return contentSize;
-}
-
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)path
 {
 	return self.itemAttributes[path.section][path.item];
@@ -133,7 +133,6 @@
 		[attributes addObjectsFromArray:[self.itemAttributes[currentSection] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(UICollectionViewLayoutAttributes *evaluatedObject, NSDictionary *bindings) {
 			return CGRectIntersectsRect(rect, evaluatedObject.frame);
 		}]]];
-//		[sections addObjectsFromArray:_itemAttributes[currentSection]];
 	}
 	return attributes;
 }
