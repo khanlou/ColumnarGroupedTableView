@@ -94,10 +94,11 @@
 			
 			if (currentItemIndex == 0) {
 				attributes.zIndex = 0; //top
+				if (numberOfItemsInSection == 1) {
+					attributes.zIndex = 3; //single
+				}
 			} else if (currentItemIndex == numberOfItemsInSection - 1) {
 				attributes.zIndex = 2; //bottom
-			} else if (numberOfItemsInSection == 1) {
-				attributes.zIndex = 4; //single
 			} else {
 				attributes.zIndex = 1; //middle
 			}
